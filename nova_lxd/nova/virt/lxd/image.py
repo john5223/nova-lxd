@@ -21,7 +21,6 @@ from nova import exception
 from nova import i18n
 from nova import image
 from nova import utils
-import os
 import shutil
 import tarfile
 import tempfile
@@ -166,11 +165,10 @@ class LXDContainerImage(object):
 
         try:
             # Create a basic LXD manifest from the image properties
-            image_arch = image_meta.properties.get('hw_architecture')
-            if image_arch is None:
-                image_arch = arch.from_host()
+            image_prop = image_meta.get('properties')
             metadata = {
-                'architecture': image_arch,
+                'architecture': image_meta.prop('architecture',
+                                                os.uname()[4]),
                 'creation_date': int(os.stat(self.container_image).st_ctime)
             }
 
