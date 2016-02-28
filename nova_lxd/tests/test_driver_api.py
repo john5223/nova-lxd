@@ -17,7 +17,7 @@ import inspect
 import json
 import os
 import platform
-from pylxd import exceptions as lxd_exceptions
+from pylxd.deprecated import exceptions as lxd_exceptions
 
 import ddt
 import mock
@@ -433,7 +433,6 @@ class LXDTestDriverNoops(test.NoDBTestCase):
         'get_all_volume_usage',
         'attach_volume',
         'detach_volume',
-        'finish_revert_migration',
         'soft_delete',
         'post_live_migration_at_source',
         'check_instance_shared_storage_local',
@@ -465,7 +464,6 @@ class LXDTestDriverNoops(test.NoDBTestCase):
 
     @ddt.data(
         'post_interrupted_snapshot_cleanup',
-        'post_live_migration',
         'check_instance_shared_storage_cleanup',
         'manage_image_cache',
     )
