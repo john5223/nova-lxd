@@ -70,12 +70,12 @@ class LXDHost(object):
             'hypervisor_type': 'lxd',
             'hypervisor_version': '011',
             'cpu_info': jsonutils.dumps(local_cpu_info),
-            'hypervisor_hostname': socket.gethostname(),
+            'hypervisor_hostname': socket.getfqdn(),
             'supported_instances':
-                [(arch.I686, hv_type.LXD, vm_mode.EXE),
-                    (arch.X86_64, hv_type.LXD, vm_mode.EXE),
+               jsonutils.dumps([(arch.I686, hv_type.LXC, vm_mode.EXE),
+                    (arch.X86_64, hv_type.LXC, vm_mode.EXE),
                     (arch.I686, hv_type.LXC, vm_mode.EXE),
-                    (arch.X86_64, hv_type.LXC, vm_mode.EXE)],
+                    (arch.X86_64, hv_type.LXC, vm_mode.EXE)]),
             'numa_topology': None,
         }
 

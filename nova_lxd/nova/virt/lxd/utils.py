@@ -49,6 +49,18 @@ class LXDContainerDirectories(object):
         return os.path.join(self.base_dir,
                             '%s-root.tar.gz' % image_meta['id'])
 
+    def get_container_manifest_image(self, image_meta):
+        return os.path.join(self.base_dir,
+                            '%s-manifest.tar' % image_meta['id'])
+
+    def get_container_metadata(self, image_meta):
+        return os.path.join(self.base_dir,
+                            '%s-lxd.tar.xz' % image_meta['id'])
+
+    def get_container_rootfsImg(self, image_meta):
+        return os.path.join(self.base_dir,
+                            '%s-root.tar.gz' % image_meta['id'])
+
     def get_container_configdrive(self, instance):
         return os.path.join(CONF.instances_path,
                             instance,

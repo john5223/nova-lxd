@@ -358,7 +358,7 @@ class LXDDriver(driver.ComputeDriver):
                 'host': 'fakehost'}
 
     def get_available_nodes(self, refresh=False):
-        hostname = socket.gethostname()
+        hostname = socket.getfqdn()
         return [hostname]
 
     def node_is_available(self, nodename):

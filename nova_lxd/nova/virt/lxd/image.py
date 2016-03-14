@@ -166,11 +166,10 @@ class LXDContainerImage(object):
         metadata_yaml = None
         try:
             # Create a basic LXD manifest from the image properties
-            image_arch = image_meta.properties.get('hw_architecture')
-            if image_arch is None:
-                image_arch = arch.from_host()
+            image_prop = image_meta.get('properties')
             metadata = {
-                'architecture': image_arch,
+                'architecture': image_prop.get('architecture',
+                                                os.uname()[4]),
                 'creation_date': int(os.stat(self.container_image).st_ctime)
             }
 
