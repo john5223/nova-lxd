@@ -186,7 +186,7 @@ class LXDHost(object):
             'idle': int(psutil.cpu_times()[3]),
             'user': int(psutil.cpu_times()[0]),
             'iowait': int(psutil.cpu_times()[4]),
-            'frequency': cpuinfo.get('cpu mhz', 0)
+            'frequency': int(float(cpuinfo.get('cpu mhz', 0)))
         }
 
     def init_host(self, host):
